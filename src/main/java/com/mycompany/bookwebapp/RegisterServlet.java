@@ -88,7 +88,7 @@ public class RegisterServlet extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String bookTitle = request.getParameter("bookName");
+            String bookTitle = request.getParameter("bookTitle");
             String bookEdition = request.getParameter("bookEdition");
             float bookPrice = Float.parseFloat(request.getParameter("bookPrice"));
             try(Connection connection = DriverManager.getConnection("jdbc:mysql:///book_app", "root", "masterkey");

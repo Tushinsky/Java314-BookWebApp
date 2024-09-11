@@ -7,6 +7,13 @@ package com.mycompany.bookwebapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/editUrl")
 public class EditServlet extends HttpServlet {
-    private static final String QUERY = "UPDATE book_data set book_title=?, "
+    private static final String QUERY = "UPDATE book_data SET book_title=?, "
             + "book_edition=?, book_price=? WHERE id=?;";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -73,7 +80,49 @@ public class EditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            try {
+                /* TODO output your page here. You may use following sample code. */
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int id = Integer.parseInt(request.getParameter("id"));
+            String bookTitle = request.getParameter("bookTitle");
+            String bookEdition = request.getParameter("bookEdition");
+            float bookPrice = Float.parseFloat(request.getParameter("bookPrice"));
+            try(Connection connection = DriverManager.getConnection("jdbc:mysql:///book_app", "root", "masterkey");
+                    PreparedStatement ps = connection.prepareStatement(QUERY)) {
+                ps.setString(1, bookTitle);
+                ps.setString(2, bookEdition);
+                ps.setFloat(3, bookPrice);
+                ps.setInt(4, id);
+                int row = ps.executeUpdate();
+                if(row == 1) {
+                    out.println("<h2>Редактирование прошло успешно</h2>");
+                    out.println("<!DOCTYPE html>");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>EditScreenServlet</title>");            
+                    out.println("<link rel='stylesheet' href='.../styles/style.css'");
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<br><a href='home.html'>Главная</a>");
+                    out.println("<br><a href='booklist'>Список книг</a>");
+                    out.println("</div>");
+                    out.println("</body>");
+                    out.println("</html>");
+                } else {
+                    out.println("<h2>Редактирование не удалось</h2>");
+                }
+                
+            } catch(SQLException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                out.println("<h2>" + ex.getMessage() + "</h2>");
+            }
+            
+        }
     }
 
     /**
