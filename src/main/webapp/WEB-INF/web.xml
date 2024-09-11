@@ -4,9 +4,33 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.mycompany.bookwebapp.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookListServlet</servlet-name>
+        <servlet-class>com.mycompany.bookwebapp.BookListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditScreenServlet</servlet-name>
+        <servlet-class>com.mycompany.bookwebapp.EditScreenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditServlet</servlet-name>
+        <servlet-class>com.mycompany.bookwebapp.EditServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookListServlet</servlet-name>
+        <url-pattern>/BookListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditScreenServlet</servlet-name>
+        <url-pattern>/EditScreenServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditServlet</servlet-name>
+        <url-pattern>/EditServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
