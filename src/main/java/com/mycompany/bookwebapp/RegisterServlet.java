@@ -26,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
-    private static final String query = 
-            "INSERT INTO book_data(book_title, book_edition, price) VALUES(?,?,?)";
+    private static final String QUERY = 
+            "INSERT INTO book_data(book_title, book_edition, book_price) VALUES(?,?,?)";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -92,7 +92,7 @@ public class RegisterServlet extends HttpServlet {
             String bookEdition = request.getParameter("bookEdition");
             float bookPrice = Float.parseFloat(request.getParameter("bookPrice"));
             try(Connection connection = DriverManager.getConnection("jdbc:mysql:///book_app", "root", "masterkey");
-                    PreparedStatement ps = connection.prepareStatement(query)) {
+                    PreparedStatement ps = connection.prepareStatement(QUERY)) {
                 ps.setString(1, bookTitle);
                 ps.setString(2, bookEdition);
                 ps.setFloat(3, bookPrice);
@@ -101,7 +101,7 @@ public class RegisterServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet RegisterServlet</title>");            
-                out.println("<link rel='stylesheet' href='../java/styles/style.css'");
+                out.println("<link rel='stylesheet' href='.../styles/style.css'");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<div class='list'>");
