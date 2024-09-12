@@ -75,3 +75,8 @@ h2{
     padding-right: 5px;
     border: 1px solid black;
 }
+
+a{
+    text-decoration: none;
+    font-size: 14pt;
+}

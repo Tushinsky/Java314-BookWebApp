@@ -1,4 +1,8 @@
-com\mycompany\bookwebapp\EditServlet.class
 com\mycompany\bookwebapp\BookListServlet.class
-com\mycompany\bookwebapp\EditScreenServlet.class
-com\mycompany\bookwebapp\RegisterServlet.class
+com\mycompany\bookwebapp\UserServlet.class
+com\mycompany\bookwebapp\BookRegisterServlet.class
+com\mycompany\bookwebapp\UserEditScreenServlet.class
+com\mycompany\bookwebapp\BookEditServlet.class
+com\mycompany\bookwebapp\UserListServlet.class
+com\mycompany\bookwebapp\UserEditServlet.class
+com\mycompany\bookwebapp\BookEditScreenServlet.class

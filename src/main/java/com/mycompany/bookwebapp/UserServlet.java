@@ -6,10 +6,10 @@ package com.mycompany.bookwebapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -84,7 +84,7 @@ public class UserServlet extends HttpServlet {
                 /* TODO output your page here. You may use following sample code. */
                 Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BookRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             String userName = request.getParameter("user_name");
             String email = request.getParameter("email");
@@ -110,13 +110,13 @@ public class UserServlet extends HttpServlet {
                 } else {
                     out.println("<h2>Регистрация пользователя не удалась</h2>");
                 }
-                out.println("<br><a href='home.html'>Главная</a>");
-                out.println("<br><a href='booklist'>Список книг</a>");
+                out.println("<br><a href='index.html'>На главную страницу</a>");
+                out.println("<br><a href='userlist'>Список пользователей</a>");
                 out.println("</div>");
                 out.println("</body>");
                 out.println("</html>");
             } catch(SQLException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BookRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                 out.println("<h2>" + ex.getMessage() + "</h2>");
             }
             

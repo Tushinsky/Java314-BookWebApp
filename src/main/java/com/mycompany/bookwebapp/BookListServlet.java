@@ -48,7 +48,7 @@ public class BookListServlet extends HttpServlet {
                 /* TODO output your page here. You may use following sample code. */
                 Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BookRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             try(Connection connection = DriverManager.getConnection("jdbc:mysql:///book_app", "root", "masterkey");
                     Statement st = connection.createStatement();
@@ -102,11 +102,11 @@ public class BookListServlet extends HttpServlet {
                 }
                 out.println("</table><br>");
                 out.println("</div>");
-                out.println("<a href=\"home.html\">На главную страницу</a>");
+                out.println("<a href=\"index.html\">На главную страницу</a>");
                 out.println("</body>");
                 out.println("</html>");
             } catch(SQLException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BookRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                 out.println("<h2>" + ex.getMessage() + "</h2>");
             }
         }

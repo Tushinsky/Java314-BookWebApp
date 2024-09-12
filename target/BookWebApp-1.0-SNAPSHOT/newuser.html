@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Регистрация нового пользователя</h2>
+            <form action="userRegistry" method="post">
+                <table class="content">
+                    <tr>
+                        <td>Имя</td>
+                        <td><input type="text" name="user_name"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td>Контактный телефон</td>
+                        <td><input type="text" name="phone_number"></td>
+                    </tr>
+                    <tr>
+                        <td>Возраст</td>
+                        <td><input type="text" name="age"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Отправить" class="submit"></td>
+                        <td><input type="reset" name="Сбросить" class="reset"></td>
+                    </tr>
+                </table>
+            </form>
+            <a href="userlist">Список пользователей</a>
+            <br>
+            <a href="index.html">На главную страницу</a>
+        </div>
+    </body>
+</html>
